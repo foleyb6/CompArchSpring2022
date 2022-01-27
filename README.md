@@ -1,7 +1,7 @@
 # CompArchSpring2022
 
 Welcome to my CompArch Spring 2022 Github Repository.
-Currently, there are 1 files located in the repository
+Currently, there are 1 files located in the repository.
 
 Files:
 
