@@ -12,3 +12,5 @@ Register.v - 32x32 register for the Comp Arch project. Files associated are Deco
 ALU.v - A 7 operation ALU for the Comp Arch project. Files associated are Add1.v, Adder.v, Arithmetic.v, LLS.v, LogicAnd.v, LogicOr.v, LogicNor.v, LogicXor.v, RLS.v, and ALU_TB.v
 
 RAM.v - A 256x32 RAM for the Comp Arch project. Files associated are RAM_TB.v
+
+ROM.v - A 19 instruction ROM for the Comp Arch project. Files associated are ROM_TB.v
