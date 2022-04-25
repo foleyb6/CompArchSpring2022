@@ -1,7 +1,7 @@
 module ALU(DataA, DataB, OPCode, Clock, ResultC, Status);
 
 input Clock;
-input [6:0] OPCode;
+input [5:0] OPCode;
 input [31:0] DataA, DataB;
 
 output reg [3:0] Status; // (Over, Carry, Zero, Neg)
