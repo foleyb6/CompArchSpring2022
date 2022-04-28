@@ -1,5 +1,6 @@
-module Adder32(DataA, DataB, CarryOut, RAdd);
+module Adder32(DataA, DataB, CarryOut, RAdd, CarryIn);
 
+input CarryIn;
 input [31:0] DataA, DataB;
 output CarryOut;
 output [31:0] RAdd;
@@ -8,7 +9,7 @@ wire W11, W12, W13, W14, W15, W16, W17, W18, W19, W20;
 wire W21, W22, W23, W24, W25, W26, W27, W28, W29, W30;
 wire W31, W32;
 
-Add1 A1 (DataA[0], DataB[0], 0, W1, RAdd[0]);
+Add1 A1 (DataA[0], DataB[0], CarryIn, W1, RAdd[0]);
 Add1 A2 (DataA[1], DataB[1], W1, W2, RAdd[1]);
 Add1 A3 (DataA[2], DataB[2], W2, W3, RAdd[2]);
 Add1 A4 (DataA[3], DataB[3], w3, W4, RAdd[3]);

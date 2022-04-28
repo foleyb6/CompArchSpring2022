@@ -20,7 +20,7 @@ refer to the applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 232 128)
+	(rect 16 16 224 128)
 	(text "ALU" (rect 5 0 26 12)(font "Arial" ))
 	(text "inst" (rect 8 96 20 108)(font "Arial" ))
 	(port
@@ -40,8 +40,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 0 64)
 		(input)
-		(text "OPCode[6..0]" (rect 0 0 54 12)(font "Arial" ))
-		(text "OPCode[6..0]" (rect 21 59 75 71)(font "Arial" ))
+		(text "Func3[2..0]" (rect 0 0 44 12)(font "Arial" ))
+		(text "Func3[2..0]" (rect 21 59 65 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
@@ -52,20 +52,20 @@ refer to the applicable agreement for further details.
 		(line (pt 0 80)(pt 16 80)(line_width 1))
 	)
 	(port
-		(pt 216 32)
+		(pt 208 32)
 		(output)
 		(text "ResultC[31..0]" (rect 0 0 56 12)(font "Arial" ))
-		(text "ResultC[31..0]" (rect 139 27 195 39)(font "Arial" ))
-		(line (pt 216 32)(pt 200 32)(line_width 3))
+		(text "ResultC[31..0]" (rect 131 27 187 39)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32)(line_width 3))
 	)
 	(port
-		(pt 216 48)
+		(pt 208 48)
 		(output)
 		(text "Status[3..0]" (rect 0 0 44 12)(font "Arial" ))
-		(text "Status[3..0]" (rect 151 43 195 55)(font "Arial" ))
-		(line (pt 216 48)(pt 200 48)(line_width 3))
+		(text "Status[3..0]" (rect 143 43 187 55)(font "Arial" ))
+		(line (pt 208 48)(pt 192 48)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 200 96)(line_width 1))
+		(rectangle (rect 16 16 192 96)(line_width 1))
 	)
 )

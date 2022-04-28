@@ -1,7 +1,7 @@
 module PC(Clock,PCI, PCO, Reset);
 
 input [31:0] PCI;
-input Reset,Clock;
+input Reset, Clock;
 
 output reg [31:0] PCO;
 
