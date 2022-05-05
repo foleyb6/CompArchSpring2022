@@ -5,12 +5,14 @@ input SEL;
 
 output reg [31:0] O;
 
-always @(SEL) begin
-	case(SEL)
-	1'b0 : O <= I0;
-	1'b1 : O <= I1;
-	default : O <= I0;
-endcase
+always
+begin
+if (SEL == 0)
+	O = I0;
+	
+else
+	O = I1;
+
 end
 
 endmodule

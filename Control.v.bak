@@ -6,10 +6,6 @@ output reg PCsrc, EnW, ALUsrc, RAMW, WB, RAMR;
 input Zero;
 input [6:0] OPCode;
 
-initial begin
-	PCsrc <= 0;
-end
-
 always @(OPCode)
 begin
 	case(OPCode)

@@ -7,7 +7,7 @@ output reg [31:0] IMM;
 
 reg [31:0] IMMI, IMMS, IMMB;
 
-always
+always @(Instr)
 begin
 
 	IMMI[11:0] <= Instr[31:20];
