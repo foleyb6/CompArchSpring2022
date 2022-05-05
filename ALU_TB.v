@@ -1,37 +1,30 @@
 module ALU_TB();
-
-reg Clock;
-reg [5:0] OPCode;
+	
 reg [31:0] DataA, DataB;
+reg [2:0] OPCode;
 
-wire [3:0] Status; // (Over, Carry, Zero, Neg)
-wire [31:0] ResultC;
+wire [32:0] Calc;
+wire [31:0] FinalOut;
+wire [3:0] Status;
+wire Clock;
 
-ALU dut (DataA, DataB, OPCode, Clock, ResultC, Status);
+ALU dut (DataA, DataB, OPCode, Calc, Clock);
+Status det (DataA, DataB, Calc, Clock, FinalOut, Status);
 
 initial begin
-	Clock <= 1'b1;
-	DataA <= 32'b0;
-	DataB <= 32'b101;
-	OPCode <= 6'b111111;
-	#5 OPCode <= 6'b010000;
-	#50 OPCode <= 6'b010000;
-	#100 OPCode <= 6'b010001;
-	#150 OPCode <= 6'b010010;
-	#200 OPCode <= 6'b001100;
-	#250 OPCode <= 6'b001101;
-	#300 OPCode <= 6'b010000;
-	#300 DataA <= 32'b11111111111111111111111111111011;
-	#300 DataB <= 32'b11111111111111111111111111111001;
-	#1000 $stop;
+	OPCode <= 3'b000;
+	DataA <= 32'd10;
+	DataB <= 32'd15;
+	#50 OPCode <= 3'b001;
+	#50 OPCode <= 3'b010;
+	#50 OPCode <= 3'b011;
+	#50 OPCode <= 3'b100;
+	#50 OPCode <= 3'b101;
+	#50 OPCode <= 3'b110;
+	#50 OPCode <= 3'b111;
+	#50 $stop;
 end
 
-always
-	#5 Clock <= ~Clock;
 
-always begin
-	#10 DataA <= DataA + 32'b1010;
-	DataB <= DataB + 32'b10100;
-end
 
 endmodule

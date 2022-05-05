@@ -1,54 +1,28 @@
-module ALU(DataA, DataB, Func3, ResultC, Status);
+module ALU(DataA, DataB, OPCode, Calc, Clock);
 
-input [2:0] Func3;
 input [31:0] DataA, DataB;
+input [2:0] OPCode;
 
-output reg [3:0] Status; // (Over, Carry, Zero, Neg)
-output reg [31:0] ResultC;
+output reg [32:0] Calc;
+output reg Clock;
 
-wire [31:0] RAdd, RSub, RAnd, ROr, RNor, RXor, RRLS, RLLS;
-wire [31:0] NB;
-wire [3:0] Stat, Stats;
-wire [7:0] RAddB;
-wire [15:0] RAddHW;
+initial begin
+	Clock <= 0;
+end
 
-assign NB = ~DataB;
-
-Arithmetic Add (RAdd, Stat[3], Stat[2], Stat[1], Stat[0], DataA, DataB, 0);
-Arithmetic Sub (RSub, Stats[3], Stats[2], Stats[1], Stats[0], DataA, NB, 1); 
-LogicAnd And (RAnd, DataA, DataB);
-LogicOr Or (ROr, DataA, DataB);
-LogicNor Nor (RNor, DataA, DataB);
-LogicXor Xor (RXor, DataA, DataB);
-RLS RLS (RRLS, DataA, DataB);
-LLS LLS (RLLS, DataA, DataB);
-
-
-always
-begin
-case(Func3)
-	3'b000 : begin
-	ResultC <= RAdd; 
-	Status[3] <= Stat[3];
-	Status[2] <= Stat[2];
-	Status[1] <= Stat[1];
-	Status[0] <= Stat[0];
-				end
-	3'b001 : begin
-	ResultC <= RAdd; 
-	Status[3] <= Stats[3];
-	Status[2] <= Stats[2];
-	Status[1] <= Stats[1];
-	Status[0] <= Stats[0];
-				end
-	3'b010 : ResultC <= RAnd;
-	3'b011 : ResultC <= ROr;
-	3'b100 : ResultC <= RNor;
-	3'b101 : ResultC <= RXor;
-	3'b110 : ResultC <= RRLS;
-	3'b111 : ResultC <= RLLS;
-	
-endcase
+always @(OPCode) begin
+	case(OPCode)
+	3'b000 : Calc <= DataA + DataB;
+	3'b001 : Calc <= DataA - DataB;
+	3'b010 : Calc <= DataA & DataB;
+	3'b011 : Calc <= DataA | DataB;
+	3'b100 : Calc <= ~(DataA | DataB);
+	3'b101 : Calc <= DataA ^ DataB;
+	3'b110 : Calc <= DataA << DataB;
+	3'b111 : Calc <= DataA >> DataB;
+	endcase
+	Clock <= ~Clock;
 end
 
 endmodule
+
